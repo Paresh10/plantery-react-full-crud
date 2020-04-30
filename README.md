@@ -1,7 +1,7 @@
 ## Project # 3: Plantery```React```  & ```Flask```
 
 ##### About:
-Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough information about plants.
+Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough information about plants. This app uses the plants API which is coming from this beck-end [Flask](https://github.com/Paresh10/plantery-react-full-crud) app.
 
 #### User Story:
 1. User can can sign up and login.
@@ -31,12 +31,9 @@ __Postgress sql__ – Data base is also structured query language database. All 
 #### Forthcoming features:
 1. Give users ability to like the plants.
 2. Give users ability to add comments on the post
+3. Give users ability to see other user's plants in their show page
 
 #### Instruction on how to run the app:
-1. This app is running with two different repositories. For the front-end is [React](https://github.com/Paresh10/plantery-react-full-crud) and for the beck-end is [Python Flask](https://github.com/Paresh10/plantery-flask-full-crud). For React clone this repo and run ```npm install``` in the terminal inside the cloned repo. This will install all the dependencies.
+1. This app is running with two different repositories. For the front-end is [React](https://github.com/Paresh10/plantery-react-full-crud) and for the beck-end is [Python Flask](https://github.com/Paresh10/plantery-flask-full-crud) see instruction there to run the flask api.
 
-2. Assuming you have python3. Clone this repository and in your terminal (open separate terminal) navigate to the desired directory where you want clone this repository and run this command source .env/bin/activate. This will run virtual environment in your source directory. All the installation should be done in virtual environment. When you see .env at the beginning, before your cursor in the terminal then you can run this command ```pip3 install -r requirement.txt``` for ```python3```. Which will install all the dependencies from the requirement.txt file. Don't forget to freeze all the installed dependencies by running this command ```pip3 freeze > requirement.txt```.
-
-3. Start the server at the python terminal by running ```python3 app.py```.
-
-4. Start the react app by running ```npm start``` and violla!!
+2. For React clone this repo and run ```npm install``` in the terminal inside the cloned repo. This will install all the dependencies and violla.
