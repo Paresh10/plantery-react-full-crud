@@ -10,7 +10,7 @@ Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough 
 4. User can see all the plants posted including other people's post.
 5. User can click on see info tab on the plant image and the modal box will open which contains all the information about that particular plant.
 6. User can all see their postings in the see my plants tab which contains all the information about their added or updated plant.
-7.User can delete their account which will delete all the information about them including all the postings.
+7. User can delete their account which will delete all the information about them including all the postings.
 
 #### Wireframes:
 ![alt text](https://i.imgur.com/cbD3bfX.jpg)
