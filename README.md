@@ -1,68 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project # 3: Plantery```React```  & ```Flask```
 
-## Available Scripts
+##### About:
+Fully functional ```CRUD``` ```React``` & ```Flask``` app that provide thorough information about plants.
 
-In the project directory, you can run:
+#### User Story:
+1. User can can sign up and login.
+2. User can create profile at the sign up page or update once logged in.
+3. User have the ability to add new plant, edit/update or delete.
+4. User can see all the plants posted including other people's post.
+5. User can click on see info tab on the plant image and the modal box will open which contains all the information about that particular plant.
+6. User can all see their postings in the see my plants tab which contains all the information about their added or updated plant.
+7.User can delete their account which will delete all the information about them including all the postings.
 
-### `npm start`
+#### Wireframes:
+![alt text](https://i.imgur.com/cbD3bfX.jpg)
+![alt text](https://i.imgur.com/2umptRu.jpg)
+![alt text](https://i.imgur.com/iTNBWoj.jpg)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Technologies used:
+**React** – Amazing JavaScript library that provides developers super powers of building complex websites easily! Front-end has been developed using ```REACT``` and designed with ```semantic-ui-react```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+__Python-Flask__ – Very powerful python flask is the back bone of this website. Beck-end is built by using flask and ample flask's library.
 
-### `npm test`
+**Sqlite** – Sqlite is structured query language database. All the data during the development phase will be saved in the Sqlite database.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**CORS** – Which stands for cross origin resource sharing, provides the ability to share data and routes from origins. Origin can be host, server and/or browser. CORS makes it possible to cross function the resources.
 
-### `npm run build`
+__Postgress sql__ – Data base is also structured query language database. All the data during and after deployement of this website will be stored in the psql database
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Forthcoming features:
+1. Give users ability to like the plants.
+2. Give users ability to add comments on the post
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+#### Instruction on how to run the app:
+1. This app is running with two different repositories. For the front-end is ```React``` and for the beck-end is ```Flask```. For React clone this repo and run ```npm install``` in the terminal inside the cloned repo. This will install all the dependencies.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Assuming you have python3. Clone this repository and in your terminal (open separate terminal) navigate to the desired directory where you want clone this repository and run this command source .env/bin/activate. This will run virtual environment in your source directory. All the installation should be done in virtual environment. When you see .env at the beginning, before your cursor in the terminal then you can run this command ```pip3 install -r requirement.txt``` for ```python3```. Which will install all the dependencies from the requirement.txt file. Don't forget to freeze all the installed dependencies by running this command ```pip3 freeze > requirement.txt```.
 
-### `npm run eject`
+3. Start the server at the python terminal by running ```python3 app.py```.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+4. Start the react app by running ```npm start``` and violla!!
