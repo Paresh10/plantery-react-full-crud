@@ -33,7 +33,7 @@ __Postgress sql__ – Data base is also structured query language database. All 
 2. Give users ability to add comments on the post
 
 #### Instruction on how to run the app:
-1. This app is running with two different repositories. For the front-end is ```React``` and for the beck-end is ```Flask```. For React clone this repo and run ```npm install``` in the terminal inside the cloned repo. This will install all the dependencies.
+1. This app is running with two different repositories. For the front-end is [React](https://github.com/Paresh10/plantery-react-full-crud) and for the beck-end is [Python Flask](https://github.com/Paresh10/plantery-flask-full-crud). For React clone this repo and run ```npm install``` in the terminal inside the cloned repo. This will install all the dependencies.
 
 2. Assuming you have python3. Clone this repository and in your terminal (open separate terminal) navigate to the desired directory where you want clone this repository and run this command source .env/bin/activate. This will run virtual environment in your source directory. All the installation should be done in virtual environment. When you see .env at the beginning, before your cursor in the terminal then you can run this command ```pip3 install -r requirement.txt``` for ```python3```. Which will install all the dependencies from the requirement.txt file. Don't forget to freeze all the installed dependencies by running this command ```pip3 freeze > requirement.txt```.
 
