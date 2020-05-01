@@ -3,8 +3,8 @@ import '../index.css'
 import { Form, Button, Label } from 'semantic-ui-react'
 
 export default class LoginSignupForm extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       name: '',
@@ -39,7 +39,12 @@ export default class LoginSignupForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.signup(this.state)
+    if (this.state.action === 'Signup') {
+      this.props.signup(this.state)
+    }
+    else {
+      this.props.login(this.state)
+    }
 
   }
 

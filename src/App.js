@@ -33,7 +33,7 @@ signup = async (signupInfo) => {
     if (signupUserResponse.status === 201) {
       this.setState({
         loggedIn: true,
-        loggedInUserName: signupUserResponse.data.username
+        loggedInUserName: signupJson.data.username
       })
     }
   }
@@ -41,6 +41,33 @@ signup = async (signupInfo) => {
     console.error(err);
   }
 
+}
+
+login = async (loginInfo) => {
+  const url = process.env.REACT_APP_API_URL + "/api/v1/users/login"
+
+  try {
+    const loginUserResponse = await fetch(url, {
+      credentials: 'include',
+      method: 'POST',
+      body: JSON.stringify(loginInfo),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    const loginJson = await loginUserResponse.json()
+    if (loginUserResponse.status === 200) {
+      this.setState({
+        loggedIn: true,
+        loggedInUserName: loginJson.data.email
+
+      })
+    }
+  }
+  catch (err) {
+    console.error(err);
+  }
 }
 
   render() {
@@ -60,6 +87,7 @@ signup = async (signupInfo) => {
         <PlantContainer />
         :
         <LoginSignupForm
+        login={this.login}
         signup={this.signup}
         />
       }
