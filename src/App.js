@@ -58,6 +58,9 @@ login = async (loginInfo) => {
     })
 
     const loginJson = await loginUserResponse.json()
+    console.log("loginJson");
+    console.log(loginJson);
+    
     if (loginUserResponse.status === 200) {
       this.setState({
         loggedIn: true,
@@ -98,9 +101,6 @@ logout = async () => {
       <React.Fragment>
       <Segment inverted>
         <Menu inverted pointing secondary>
-          <Menu.Item
-            name="Add new plant"
-            />
             <Menu.Item
               onClick={this.logout}
               name="Log out"
@@ -110,14 +110,13 @@ logout = async () => {
         </Menu>
 
       </Segment>
-      <UserContainer />
       {
         this.state.loggedIn
         ?
         <React.Fragment>
 
         <PlantContainer />
-
+        <UserContainer />
         </React.Fragment>
         :
         <LoginSignupForm

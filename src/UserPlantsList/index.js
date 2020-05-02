@@ -31,7 +31,9 @@ export default function UserPlantsList(props) {
 
             <Card.Content extra>
             <div className='ui two buttons'>
-              <Button basic color='blue'>
+              <Button
+              onClick={() => props.editPlant(plant.id)}
+              basic color='blue'>
                 Edit
               </Button>
               <Button basic color='red'>
