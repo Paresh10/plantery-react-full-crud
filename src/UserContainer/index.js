@@ -37,6 +37,28 @@ userPlants = async () => {
   })
 }
 
+deleteUserPlants = async (idOfPlantToDelete) => {
+  const url = process.env.REACT_APP_API_URL + '/api/v1/plants/' + idOfPlantToDelete
+
+  try {
+    const deleteUserPlantsResponse = await fetch(url, {
+      credentials: 'include',
+      method: 'DELETE'
+    })
+
+    const deleteUserJson = await deleteUserPlantsResponse.json()
+
+    if (deleteUserPlantsResponse.status === 200) {
+      this.setState({
+        allUserPlants: this.state.allUserPlants.filter(plant => plant.id !== idOfPlantToDelete)
+      })
+    }
+  }
+  catch (err) {
+      console.error(err);
+  }
+}
+
 editPlant = (idOfPlantToEdit) => {
   console.log("idOfPlantToEdit");
   console.log(idOfPlantToEdit);
@@ -92,6 +114,7 @@ closeModal =() => {
         <UserPlantsList
           allUserPlants={this.state.allUserPlants}
           editPlant={this.editPlant}
+          deleteUserPlants={this.deleteUserPlants}
           />
           {
             this.state.idOfPlantToEdit !== -1

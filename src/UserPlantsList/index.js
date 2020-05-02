@@ -36,7 +36,9 @@ export default function UserPlantsList(props) {
               basic color='blue'>
                 Edit
               </Button>
-              <Button basic color='red'>
+              <Button
+              onClick={() => props.deleteUserPlants(plant.id)}
+              basic color='red'>
                 Delete
               </Button>
             </div>
