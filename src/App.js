@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import PlantContainer from './PlantContainer'
 import LoginSignupForm from './LoginSignupForm'
+import UserContainer from './UserContainer'
 import { Menu, Segment } from 'semantic-ui-react'
 
 export default class App extends Component {
@@ -70,6 +71,28 @@ login = async (loginInfo) => {
   }
 }
 
+logout = async () => {
+  try {
+    const url = process.env.REACT_APP_API_URL + "/api/v1/users/logout"
+
+    const logoutUserResponse = await fetch(url, {
+      credentials: 'include'
+    })
+
+    // const logoutJson = await logoutUserResponse.json()
+
+    if (logoutUserResponse.status === 200) {
+      this.setState({
+        loggedIn: false,
+        loggedInUserName: ''
+      })
+    }
+  }
+  catch (err) {
+    console.error(err);
+  }
+}
+
   render() {
     return (
       <React.Fragment>
@@ -78,20 +101,30 @@ login = async (loginInfo) => {
           <Menu.Item
             name="Add new plant"
             />
+            <Menu.Item
+              onClick={this.logout}
+              name="Log out"
+              />
+            <Menu.Item
+            />
         </Menu>
 
       </Segment>
+      <UserContainer />
       {
         this.state.loggedIn
         ?
+        <React.Fragment>
+
         <PlantContainer />
+
+        </React.Fragment>
         :
         <LoginSignupForm
         login={this.login}
         signup={this.signup}
         />
       }
-
       </React.Fragment>
     );
 
