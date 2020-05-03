@@ -74,7 +74,7 @@ addNewPlant = async (addPlant) => {
   render() {
     return(
       <React.Fragment>
-      <h3> Welcome to Plantery </h3>
+      <h3> {this.props.message} Welcome to Plantery </h3>
       <PlantNewForm addNewPlant={this.addNewPlant}/>
       {
         this.state.plants.length > 0

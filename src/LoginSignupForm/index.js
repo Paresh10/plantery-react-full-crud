@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../index.css'
-import { Form, Button, Label } from 'semantic-ui-react'
+import { Form, Button, Label, Message } from 'semantic-ui-react'
 
 export default class LoginSignupForm extends Component {
   constructor(props) {
@@ -50,6 +50,7 @@ export default class LoginSignupForm extends Component {
 
 
   render() {
+
     return(
       <React.Fragment>
       <h3> {this.state.action} here! </h3>

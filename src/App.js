@@ -3,7 +3,7 @@ import './App.css';
 import PlantContainer from './PlantContainer'
 import LoginSignupForm from './LoginSignupForm'
 import UserContainer from './UserContainer'
-import { Menu, Segment } from 'semantic-ui-react'
+import { Menu, Segment, Message } from 'semantic-ui-react'
 
 export default class App extends Component {
   constructor(props){
@@ -13,7 +13,8 @@ export default class App extends Component {
         loggedIn: false,
         loggedInUserName: '',
         users: [],
-        userId: null
+        userId: null,
+        message: ''
     }
   }
 
@@ -60,28 +61,32 @@ login = async (loginInfo) => {
     })
 
     const loginJson = await loginUserResponse.json()
-    console.log("loginJson");
-    console.log(loginJson);
-
-
 
     if (loginUserResponse.status === 200) {
 
       const users = this.state.users.slice()
       users.push(loginJson.data)
 
+      console.log("loggedInUserName before state");
+      console.log(this.state.loggedInUserName);
+
       this.setState({
         loggedIn: true,
-        loggedInUserName: loginJson.data.email,
+        loggedInUserName: loginJson.data.username,
         userId: loginJson.data.id,
         users: users
-
       })
-      console.log("users in login");
-      console.log(this.state.users);
+      let message = this.state.message
+      message = `Hey ${this.state.loggedInUserName},`
 
-      console.log("this.state.userId in login");
-      console.log(this.state.userId);
+      this.setState({
+        message: message
+      })
+
+      console.log("message");
+      console.log(message);
+      console.log("loggedInUserName after state");
+      console.log(this.state.loggedInUserName);
     }
   }
   catch (err) {
@@ -121,15 +126,7 @@ deleteUserAccount = async () => {
 
     })
 
-    console.log("deleteUserResponse");
-    console.log(deleteUserResponse);
-
     const deletedUserJson = await deleteUserResponse.json()
-
-    console.log("deletedUserJson");
-    console.log(deletedUserJson);
-    console.log("userId");
-    console.log(this.state.userId)
 
     if (deleteUserResponse.status === 200) {
       const users = this.state.users.filter(user => user.id !== this.state.userId)
@@ -146,16 +143,20 @@ deleteUserAccount = async () => {
 }
 
   render() {
-    console.log("this.state.users");
-    console.log(this.state.users)
     return (
       <React.Fragment>
       <Segment inverted>
         <Menu inverted pointing secondary>
-            <Menu.Item
-              onClick={this.logout}
-              name="Log out"
-              />
+
+        {
+          this.state.loggedIn
+          &&
+          <Menu.Item
+            onClick={this.logout}
+            name="Log out"
+            />
+        }
+
             <Menu.Item
             />
             <Menu.Item
@@ -171,7 +172,9 @@ deleteUserAccount = async () => {
         ?
         <React.Fragment>
 
-        <PlantContainer />
+        <PlantContainer
+        message={this.state.message}
+        />
         <UserContainer />
         </React.Fragment>
         :
