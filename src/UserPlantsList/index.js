@@ -43,6 +43,7 @@ export default function UserPlantsList(props) {
               </Button>
             </div>
           </Card.Content>
+
         </Card>
       </Card.Group>
     )

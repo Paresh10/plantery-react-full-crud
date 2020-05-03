@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import UserPlantsList from '../UserPlantsList'
 import EditUserPlants from '../EditUserPlants'
 
+
+
 export default class UserContainer extends Component {
 
   constructor(props) {
@@ -9,13 +11,15 @@ export default class UserContainer extends Component {
 
     this.state = {
       allUserPlants: [],
-      idOfPlantToEdit: -1
+      idOfPlantToEdit: -1,
+      loggedIn: true
     }
   }
 componentDidMount() {
   this.userPlants()
 }
 
+// See myplans
 userPlants = async () => {
   const url = process.env.REACT_APP_API_URL + "/api/v1/users/myplants"
   console.log('url')
@@ -101,6 +105,9 @@ updatePlant = async (updatePlantInfo) => {
   }
 }
 
+
+
+
 closeModal =() => {
   this.setState({
     idOfPlantToEdit: -1
@@ -110,6 +117,7 @@ closeModal =() => {
   render() {
     return (
       <React.Fragment>
+
       <h3> See My Plants </h3>
         <UserPlantsList
           allUserPlants={this.state.allUserPlants}

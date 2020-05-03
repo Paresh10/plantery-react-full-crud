@@ -11,7 +11,9 @@ export default class App extends Component {
 
       this.state = {
         loggedIn: false,
-        loggedInUserName: ''
+        loggedInUserName: '',
+        users: [],
+        userId: null
     }
   }
 
@@ -34,7 +36,7 @@ signup = async (signupInfo) => {
     if (signupUserResponse.status === 201) {
       this.setState({
         loggedIn: true,
-        loggedInUserName: signupJson.data.username
+        loggedInUserName: signupJson.data.username,
       })
     }
   }
@@ -60,13 +62,26 @@ login = async (loginInfo) => {
     const loginJson = await loginUserResponse.json()
     console.log("loginJson");
     console.log(loginJson);
-    
+
+
+
     if (loginUserResponse.status === 200) {
+
+      const users = this.state.users.slice()
+      users.push(loginJson.data)
+
       this.setState({
         loggedIn: true,
-        loggedInUserName: loginJson.data.email
+        loggedInUserName: loginJson.data.email,
+        userId: loginJson.data.id,
+        users: users
 
       })
+      console.log("users in login");
+      console.log(this.state.users);
+
+      console.log("this.state.userId in login");
+      console.log(this.state.userId);
     }
   }
   catch (err) {
@@ -96,7 +111,43 @@ logout = async () => {
   }
 }
 
+deleteUserAccount = async () => {
+  const url = process.env.REACT_APP_API_URL + "/api/v1/users/" + this.state.userId
+
+  try {
+    const deleteUserResponse = await fetch(url, {
+      credentials: 'include',
+      method: 'DELETE'
+
+    })
+
+    console.log("deleteUserResponse");
+    console.log(deleteUserResponse);
+
+    const deletedUserJson = await deleteUserResponse.json()
+
+    console.log("deletedUserJson");
+    console.log(deletedUserJson);
+    console.log("userId");
+    console.log(this.state.userId)
+
+    if (deleteUserResponse.status === 200) {
+      const users = this.state.users.filter(user => user.id !== this.state.userId)
+      this.setState({
+        loggedIn: false,
+        users: users
+      })
+
+    }
+  }
+  catch (err) {
+    console.error(err);
+  }
+}
+
   render() {
+    console.log("this.state.users");
+    console.log(this.state.users)
     return (
       <React.Fragment>
       <Segment inverted>
@@ -107,6 +158,11 @@ logout = async () => {
               />
             <Menu.Item
             />
+            <Menu.Item
+            onClick={this.deleteUserAccount}
+            name="DELETE USER"
+            />
+
         </Menu>
 
       </Segment>

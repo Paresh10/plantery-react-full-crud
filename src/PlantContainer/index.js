@@ -76,7 +76,15 @@ addNewPlant = async (addPlant) => {
       <React.Fragment>
       <h3> Welcome to Plantery </h3>
       <PlantNewForm addNewPlant={this.addNewPlant}/>
-      <PlantList plants={this.state.plants}/>
+      {
+        this.state.plants.length > 0
+        ?
+        <PlantList plants={this.state.plants}/>
+        :
+        <p> Where are all myt plants? ☹️</p>
+
+      }
+
       </React.Fragment>
     )
   }
