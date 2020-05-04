@@ -1,17 +1,24 @@
 import React from 'react'
 import UserPlantsList from '../UserPlantsList'
 import { Menu, Segment } from 'semantic-ui-react'
-// import { Link, BrowserRouter as Router, Route} from 'react-router-dom'
+import { Link, BrowserRouter as Router, Route} from 'react-router-dom'
 
 export default function HeaderBar(props) {
 
   return(
     <React.Fragment>
-    <div class="ui three item menu">
-    <a href="/api/v1/users/myplants" Ccomponent={UserPlantsList} class="item active">SeeMyPlants</a>
-    <a class="item">Reviews</a>
-    <a class="item">Upcoming Events</a>
-</div>
+      <div class="ui fixed borderless huge menu">
+        <div class="ui container grid">
+          <a class="header item">
+          <Link to="/plants">
+            Plantery
+          </Link> </a>
+          <a class="active item">
+          <Link to="/users/myplants">
+            SeeMyPlants
+          </Link> </a>
+        </div>
+      </div>
     </React.Fragment>
   )
 

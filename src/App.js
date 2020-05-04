@@ -5,7 +5,7 @@ import LoginSignupForm from './LoginSignupForm'
 import UserContainer from './UserContainer'
 import HeaderBar from './HeaderBar'
 import { Menu, Segment, Message } from 'semantic-ui-react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 export default class App extends Component {
   constructor(props){
@@ -159,6 +159,7 @@ deleteUserAccount = async () => {
   render() {
     return (
     <Router>
+
       <React.Fragment>
       <Segment inverted>
         <Menu inverted pointing secondary>
@@ -186,7 +187,7 @@ deleteUserAccount = async () => {
         this.state.loggedIn
         ?
         <React.Fragment>
-
+        <HeaderBar />
         <PlantContainer
         message={this.state.message}
         />
