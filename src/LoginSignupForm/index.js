@@ -54,6 +54,7 @@ export default class LoginSignupForm extends Component {
     return(
       <React.Fragment>
       <h3> {this.state.action} here! </h3>
+        <h4> <Message> {this.props.message} </Message>  </h4>
              <Form onSubmit={this.handleSubmit}>
              {
                this.state.action === 'Signup'

@@ -3,7 +3,9 @@ import './App.css';
 import PlantContainer from './PlantContainer'
 import LoginSignupForm from './LoginSignupForm'
 import UserContainer from './UserContainer'
+import HeaderBar from './HeaderBar'
 import { Menu, Segment, Message } from 'semantic-ui-react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 export default class App extends Component {
   constructor(props){
@@ -90,11 +92,16 @@ login = async (loginInfo) => {
         message: message
       })
 
-      console.log("message");
-      console.log(message);
-      console.log("loggedInUserName after state");
-      console.log(this.state.loggedInUserName);
+
     }
+    else {
+      this.setState({
+        message: 'Username or password not valid'
+      })
+    }
+    console.log("this.state,message");
+    console.log(this.state.message);
+
   }
   catch (err) {
     console.error(err);
@@ -151,6 +158,7 @@ deleteUserAccount = async () => {
 
   render() {
     return (
+    <Router>
       <React.Fragment>
       <Segment inverted>
         <Menu inverted pointing secondary>
@@ -186,11 +194,13 @@ deleteUserAccount = async () => {
         </React.Fragment>
         :
         <LoginSignupForm
+        message={this.state.message}
         login={this.login}
         signup={this.signup}
         />
       }
       </React.Fragment>
+    </Router>
     );
 
   }

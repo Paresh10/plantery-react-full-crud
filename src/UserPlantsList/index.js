@@ -75,7 +75,7 @@ export default class UserPlantsList extends Component {
     return(
       <Card.Group>
 
-      {allPlantsForUser}
+        {allPlantsForUser}
 
       </Card.Group>
     )

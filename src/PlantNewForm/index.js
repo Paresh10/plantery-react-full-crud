@@ -52,7 +52,7 @@ handleSubmit = (event) => {
           type="text"
           name="region"
           value={this.state.region}
-          placeholder="Where does plant originates from?"
+          placeholder="Where does this plant originates from?"
           onChange={this.handleChange}
         />
         <Label>Description:</Label>

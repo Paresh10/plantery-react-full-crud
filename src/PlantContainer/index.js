@@ -81,7 +81,7 @@ addNewPlant = async (addPlant) => {
         ?
         <PlantList plants={this.state.plants}/>
         :
-        <p> Where are all myt plants? ☹️</p>
+        <p> Where are all my plants? ☹️</p>
 
       }
 
