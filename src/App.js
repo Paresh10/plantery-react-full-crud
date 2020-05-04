@@ -40,6 +40,13 @@ signup = async (signupInfo) => {
         loggedInUserName: signupJson.data.username,
       })
     }
+    let message = this.state.message
+    message = `Hey ${this.state.loggedInUserName},`
+
+    this.setState({
+      message: message
+    })
+
   }
   catch (err) {
     console.error(err);
