@@ -8,7 +8,9 @@ export default class PlantContainer extends Component {
     super(props)
 
     this.state = {
-      plants: []
+      plants: [],
+      addPlant: -1,
+      status: ''
     }
   }
 componentDidMount () {
@@ -71,17 +73,30 @@ addNewPlant = async (addPlant) => {
   }
 }
 
+// getStatus = () => {
+//   this.setStatus({
+//     status: this.props.action
+//   })
+
+// }
+
   render() {
     return(
       <React.Fragment>
       <h3> {this.props.message} Welcome to Plantery </h3>
-      <PlantNewForm addNewPlant={this.addNewPlant}/>
+
+      {
+        this.props.action === "AddPlant"
+        &&
+        <PlantNewForm
+        closeModal={this.closeModal}
+        addNewPlant={this.addNewPlant}/>
+      }
+
       {
         this.state.plants.length > 0
-        ?
+        &&
         <PlantList plants={this.state.plants}/>
-        :
-        <p> Where are all my plants? ☹️</p>
 
       }
 

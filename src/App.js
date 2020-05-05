@@ -3,9 +3,8 @@ import './App.css';
 import PlantContainer from './PlantContainer'
 import LoginSignupForm from './LoginSignupForm'
 import UserContainer from './UserContainer'
-import HeaderBar from './HeaderBar'
 import { Menu, Segment, Message } from 'semantic-ui-react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 
 export default class App extends Component {
   constructor(props){
@@ -16,7 +15,8 @@ export default class App extends Component {
         loggedInUserName: '',
         users: [],
         userId: null,
-        message: ''
+        message: '',
+        action: ""
     }
   }
 
@@ -156,42 +156,55 @@ deleteUserAccount = async () => {
   }
 }
 
+setAction = (newAction) => {
+  this.setState({
+    action: newAction
+  })
+}
+
+
   render() {
+    console.log(this.state);
     return (
     <Router>
 
       <React.Fragment>
-      <Segment inverted>
-        <Menu inverted pointing secondary>
-
-        {
+    {
           this.state.loggedIn
           &&
+
+          <Segment inverted>
+          <Menu inverted pointing secondary>
           <Menu.Item
             onClick={this.logout}
             name="Log out"
             />
-        }
-
-            <Menu.Item
-            />
             <Menu.Item
             onClick={this.deleteUserAccount}
-            name="DELETE USER"
+            name="Delete Account"
+            />
+            <Menu.Item
+            onClick={() => this.setAction("ShowPlants")}
+            name="Show Plants"
+            />
+            <Menu.Item
+            onClick={() => this.setAction("AddPlant")}
+            name="Add Plant"
             />
 
         </Menu>
-
       </Segment>
+        }
+
       {
         this.state.loggedIn
         ?
         <React.Fragment>
-        <HeaderBar />
         <PlantContainer
+        action={this.state.action}
         message={this.state.message}
         />
-        <UserContainer />
+        <UserContainer action={this.state.action}/>
         </React.Fragment>
         :
         <LoginSignupForm

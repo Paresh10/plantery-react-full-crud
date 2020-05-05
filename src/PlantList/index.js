@@ -24,9 +24,6 @@ export default function PlantList(props) {
         </Card.Content>
         <Card.Content extra>
 
-        <Button basic color='green'>
-           Read More
-        </Button>
         </Card.Content>
       </Card>
     )

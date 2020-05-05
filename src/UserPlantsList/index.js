@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Button, Image } from 'semantic-ui-react'
+import HeaderBar from '../HeaderBar'
 
 export default class UserPlantsList extends Component {
 
@@ -7,19 +8,19 @@ export default class UserPlantsList extends Component {
     super(props)
 
     this.state = {
-      action: 'SeeMyPlants'
+      action: 'ShowPlants'
     }
   }
 
   renderUsersPlants = () => {
-    if (this.state.action === 'SeeMyPlants') {
+    if (this.state.action === 'ShowPlants') {
       this.setState({
         action: 'HideMyPlants'
       })
     }
     else {
       this.setState({
-        action: 'SeeMyPlants'
+        action: 'ShowPlants'
       })
     }
   }
@@ -74,8 +75,13 @@ export default class UserPlantsList extends Component {
 
     return(
       <Card.Group>
-
+      {
+        this.state.action === 'ShowPlants'
+        &&
+        <div>
         {allPlantsForUser}
+        </div>
+      }
 
       </Card.Group>
     )

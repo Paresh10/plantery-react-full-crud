@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Label, Modal, Header } from 'semantic-ui-react'
+import { Form, Button, Label, Modal, Header, Icon } from 'semantic-ui-react'
 
 
 export default class PlantNewForm extends Component {
@@ -9,7 +9,8 @@ export default class PlantNewForm extends Component {
     this.state = {
       name: '',
       region: '',
-      description: ''
+      description: '',
+      status: true
     }
   }
 
@@ -31,9 +32,32 @@ handleSubmit = (event) => {
   })
 }
 
+
+openModal = () => {
+  let state = this.props.getStatus
+  state = true
+  this.setState({
+    status: true
+  })
+}
+
+closeModal = () => {
+  this.setState({
+    status: false
+  })
+}
+
   render() {
+    console.log("this.state.status");
+    console.log(this.state.status);
+    console.log("closeModal");
+    console.log(this.closeModal);
+    console.log("this.open openModal");
+    console.log(this.openModal);
+
     return(
-      <Modal trigger={<Button> Add New Plant </Button>}>
+
+      <Modal trigger={<Button>  Add New Plant! </Button>} closeIcon={true} onClose={this.closeModal}>
       <Header>
         <h3> Add New Plant! </h3>
       </Header>
@@ -69,6 +93,7 @@ handleSubmit = (event) => {
       </Form>
       </Modal.Content>
     </Modal>
+
     )
   }
 

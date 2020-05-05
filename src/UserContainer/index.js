@@ -3,8 +3,6 @@ import UserPlantsList from '../UserPlantsList'
 import EditUserPlants from '../EditUserPlants'
 
 
-
-
 export default class UserContainer extends Component {
 
   constructor(props) {
@@ -118,13 +116,17 @@ closeModal =() => {
   render() {
     return (
       <React.Fragment>
-
       <h3> See My Plants </h3>
+      {
+        this.props.action === "ShowPlants"
+        &&
         <UserPlantsList
           allUserPlants={this.state.allUserPlants}
           editPlant={this.editPlant}
           deleteUserPlants={this.deleteUserPlants}
           />
+      }
+
           {
             this.state.idOfPlantToEdit !== -1
             &&
@@ -134,6 +136,7 @@ closeModal =() => {
             plantToEdit=
             {this.state.allUserPlants.find((plant)=> plant.id === this.state.idOfPlantToEdit)}
             />
+
           }
       </React.Fragment>
     )
