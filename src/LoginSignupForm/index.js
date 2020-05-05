@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../index.css'
-import { Form, Button, Label, Message } from 'semantic-ui-react'
+import { Form, Button, Label, Message, Segment, Grid, Header, Image } from 'semantic-ui-react'
 
 export default class LoginSignupForm extends Component {
   constructor(props) {
@@ -47,67 +47,89 @@ export default class LoginSignupForm extends Component {
     }
 
   }
+//       
+//textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'
 
 
   render() {
 
     return(
-      <React.Fragment>
-      <h3> {this.state.action} here! </h3>
-        <h4> <Message> {this.props.message} </Message>  </h4>
-             <Form onSubmit={this.handleSubmit}>
+      <Grid inverted textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+         
+        <Grid.Column style={{ maxWidth: 450}}>
+            <Header as='h2' color='teal' textAlign='center'>
+              <Image src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSE9QAnM-RsJuta8SNp___18t9xWTyJ9Q_QBjNpcpFJNFa2zKh4Wg5-iTG43mqmqa2YdYznun07&usqp=CAc' /> {this.state.action}!
+           </Header>
+       
+
+             <Form onSubmit={this.handleSubmit}  inverted size='large'>
+
+             <h4> {this.props.message} </h4>
+             
+              <Segment stacked>
              {
                this.state.action === 'Signup'
                &&
-               <React.Fragment>
-                 <Label>Name:</Label>
+               <Form.Group widths='equal'>
                  <Form.Input
+                 fluid label='Name'
                  type="text"
                  name="name"
-                 placeholder="Enter your name"
+                 placeholder="Your name"
                  value={this.state.name}
                  onChange={this.handleChange}
                />
-               <Label>Email:</Label>
+
                <Form.Input
+                fluid label='Email'
                  type="email"
                  name="email"
                  placeholder="Enter your email"
                  value={this.state.email}
                  onChange={this.handleChange}
                />
-               </React.Fragment>
+               </Form.Group>
              }
-               <Label>Username:</Label>
+             <Form.Group widths='equal'>
                <Form.Input
-                 type="text"
-                 name="username"
-                 placeholder="Enter a username"
-                 value={this.state.username}
-                 onChange={this.handleChange}
+                fluid icon='user'
+                iconPosition='left'
+                fluid label='User Name'
+                type="text"
+                name="username"
+                placeholder="Enter a username"
+                value={this.state.username}
+                onChange={this.handleChange}
                />
-               <Label>Password:</Label>
+
                <Form.Input
-                 type="text"
-                 name="password"
-                 placeholder="Enter a password"
-                 value={this.state.password}
-                 onChange={this.handleChange}
+                fluid icon='lock'
+                iconPosition='left'
+                fluid label='Password'
+                type="text"
+                name="password"
+                placeholder="Enter a password"
+                value={this.state.password}
+                onChange={this.handleChange}
                />
-               <Button type="Submit">Log In</Button>
+               </Form.Group>
+               <Button color='teal'  fluid size='large' type="Submit">Let Me in!</Button>
+               </Segment>
              </Form>
+
              {
                this.state.action === 'Login'
                ?
-               <p>
+               <Message>
                Need an account? Sign up <span className="link" onClick={this.conditionalFormRendering}>here</span>
-               </p>
+               </Message>
                :
-               <p>
+               <Message>
                Already have an account? Log in <span className="link" onClick={this.conditionalFormRendering}>here</span>
-               </p>
+               </Message>
              }
-           </React.Fragment>
+             </Grid.Column>
+           </Grid>
     )
   }
 }

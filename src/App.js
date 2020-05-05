@@ -16,7 +16,8 @@ export default class App extends Component {
         users: [],
         userId: null,
         message: '',
-        action: ""
+        action: "",
+        activeItem: 'Show Plants'
     }
   }
 
@@ -162,9 +163,14 @@ setAction = (newAction) => {
   })
 }
 
+handleItemClicked = (event, { name }) => this.setState({ activeItem: name })
+
 
   render() {
-    console.log(this.state);
+
+    const { activeItem } = this.state.activeItem
+
+
     return (
     <Router>
 
@@ -173,25 +179,35 @@ setAction = (newAction) => {
           this.state.loggedIn
           &&
 
-          <Segment inverted>
-          <Menu inverted pointing secondary>
-          <Menu.Item
-            onClick={this.logout}
-            name="Log out"
-            />
+          <Segment style={{backgroundColor: 'teal'}}>
+          <Menu  pointing secondary fluid widths={4}>
+
             <Menu.Item
-            onClick={this.deleteUserAccount}
-            name="Delete Account"
-            />
-            <Menu.Item
+            active={activeItem === 'Show Plants'}
+            style={{ color: 'white'}}
             onClick={() => this.setAction("ShowPlants")}
             name="Show Plants"
             />
             <Menu.Item
+            active={activeItem === 'Add Plant'}
+            style={{ color: 'white'}}
             onClick={() => this.setAction("AddPlant")}
             name="Add Plant"
             />
 
+            <Menu.Item
+            active={activeItem === 'Add Plant'}
+            style={{ color: 'white'}}
+            color='teal'
+            onClick={this.deleteUserAccount}
+            name="Delete Account"
+            />
+
+          <Menu.Item
+            style={{ color: 'white'}}
+            onClick={this.logout}
+            name="Log out"
+            />
         </Menu>
       </Segment>
         }

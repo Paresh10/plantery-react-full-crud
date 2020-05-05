@@ -74,16 +74,16 @@ export default class UserPlantsList extends Component {
     })
 
     return(
-      <Card.Group>
+      <React.Fragment>
       {
         this.state.action === 'ShowPlants'
         &&
-        <div>
+        <Card.Group>
         {allPlantsForUser}
-        </div>
+        </Card.Group>
       }
 
-      </Card.Group>
+      </React.Fragment>
     )
     }
 

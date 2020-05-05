@@ -88,7 +88,7 @@ closeModal = () => {
           onChange={this.handleChange}
         />
         <Modal.Actions>
-        <Button type="Submit">Add New Plant</Button>
+        <Button basic color='teal' type="Submit">Add New Plant</Button>
         </Modal.Actions>
       </Form>
       </Modal.Content>
