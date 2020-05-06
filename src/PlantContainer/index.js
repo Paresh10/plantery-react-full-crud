@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PlantList from '../PlantList'
 import PlantNewForm from '../PlantNewForm'
+import './index.css'
 
 
 export default class PlantContainer extends Component {
@@ -83,7 +84,7 @@ addNewPlant = async (addPlant) => {
   render() {
     return(
       <React.Fragment>
-      <h3> {this.props.message} Welcome to Plantery </h3>
+      <h3 className="welcome"> {this.props.message} Welcome to Plantery </h3>
 
       {
         this.props.action === "AddPlant"
