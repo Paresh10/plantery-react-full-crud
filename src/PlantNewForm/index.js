@@ -10,6 +10,7 @@ export default class PlantNewForm extends Component {
       name: '',
       region: '',
       description: '',
+      image: '',
       status: true
     }
   }
@@ -23,12 +24,18 @@ handleChange = (event) => {
 handleSubmit = (event) => {
   event.preventDefault()
 
-  this.props.addNewPlant(this.state)
+  this.props.addNewPlant({
+    name: this.state.name,
+    region: this.state.region,
+    description: this.state.description,
+    image: this.state.image
+  })
 
   this.setState({
     name: '',
     region: '',
-    description: ''
+    description: '',
+    image: ''
   })
 }
 
@@ -47,13 +54,33 @@ closeModal = () => {
   })
 }
 
+uploadImage = async image => {
+  const files = image.target.files;
+  const data = new FormData();
+
+  data.append("file", files[0]);
+  data.append("upload_preset", "paresh");
+
+  const response = await fetch(
+    "https://api.cloudinary.com/v1_1/dy5lodsfm/image/upload",
+    {
+      method: "POST",
+      body: data
+    }
+  );
+
+  const file = await response.json();
+
+  console.log("file.secure_url")
+  console.log(file.secure_url);
+
+  this.setState({
+    image: file.secure_url
+  });
+};
+
   render() {
-    console.log("this.state.status");
-    console.log(this.state.status);
-    console.log("closeModal");
-    console.log(this.closeModal);
-    console.log("this.open openModal");
-    console.log(this.openModal);
+
 
     return(
 
@@ -87,6 +114,13 @@ closeModal = () => {
           placeholder="Tell us about this plant"
           onChange={this.handleChange}
         />
+        <Form.Input
+          type="file"
+          name="image"
+          placeholder="Upload Image"
+          onChange={this.uploadImage}
+        />
+
         <Modal.Actions>
         <Button basic color='teal' type="Submit">Add New Plant</Button>
         </Modal.Actions>

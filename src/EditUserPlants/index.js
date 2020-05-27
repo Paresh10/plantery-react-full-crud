@@ -9,7 +9,8 @@ export default class EditUserPlants extends Component {
     this.state = {
       name: '',
       region: '',
-      description: ''
+      description: '',
+      image: ''
 
     }
   }
@@ -22,8 +23,40 @@ export default class EditUserPlants extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.updatePlant(this.state)
+
+    this.props.updatePlant({
+      name: this.state.name,
+      region: this.state.region,
+      description: this.state.description,
+      image: this.state.image
+    })
   }
+
+ uploadImage = async image => {
+  const files = image.target.files;
+  const data = new FormData();
+
+  data.append("file", files[0]);
+  data.append("upload_preset", "paresh");
+
+  const response = await fetch(
+    "https://api.cloudinary.com/v1_1/dy5lodsfm/image/upload",
+    {
+      method: "POST",
+      body: data
+    }
+  );
+
+  const file = await response.json();
+
+  console.log("file.secure_url")
+  console.log(file.secure_url);
+
+  this.setState({
+    image: file.secure_url
+  });
+};
+ 
 
   render() {
     return(
@@ -56,6 +89,12 @@ export default class EditUserPlants extends Component {
                     placeholder="About..."
                     onChange={this.handleChange}
                   />
+                  <Form.Input
+                    type="file"
+                    name="image"
+                    placeholder="Update Plant's image"
+                    onChange={this.uploadImage}
+                  />                  
                   <Modal.Actions>
                     <Button type="Submit">Update</Button>
                   </Modal.Actions>

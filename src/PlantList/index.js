@@ -6,8 +6,8 @@ export default function PlantList(props) {
 
   const plants = props.plants.map((plant) => {
     return(
-      <Card key={plant.id} color='black'>
-      <Image src= 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSE9QAnM-RsJuta8SNp___18t9xWTyJ9Q_QBjNpcpFJNFa2zKh4Wg5-iTG43mqmqa2YdYznun07&usqp=CAc'/>
+      <Card key={plant.id} color='black' style={{ marginLeft: '20px' }}>
+      <Image src= {plant.image}/>
       <Card.Content>
         <Card.Header>
           {plant.name}

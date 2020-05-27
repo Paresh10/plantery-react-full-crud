@@ -97,7 +97,8 @@ addNewPlant = async (addPlant) => {
       {
         this.state.plants.length > 0
         &&
-        <PlantList plants={this.state.plants}/>
+        <PlantList plants={this.state.plants}
+        />
 
       }
 

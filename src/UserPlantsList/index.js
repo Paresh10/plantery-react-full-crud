@@ -28,13 +28,13 @@ export default class UserPlantsList extends Component {
   render() {
     const allPlantsForUser = this.props.allUserPlants.map((plant) => {
       return(
-        <Card.Group key={plant.id} color='black'>
+        <Card.Group key={plant.id} color='black' style={{ marginLeft: '20px' }}>
           <Card >
             <Card.Content >
               <Image
               floated='right'
               size='mini'
-              src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSE9QAnM-RsJuta8SNp___18t9xWTyJ9Q_QBjNpcpFJNFa2zKh4Wg5-iTG43mqmqa2YdYznun07&usqp=CAc'
+              src={plant.image}
               />
               <Card.Header>
                 {plant.name}
